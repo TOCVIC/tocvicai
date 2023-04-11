@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>New Doc</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>header</h1>-->
+<!--</body>-->
+<!--</html>-->
+
+	<head>
+		<title>Voice Recognition Web App</title>
+	</head>
+	<body>
+		<h1>Voice Recognition Web App</h1>
+		<form action="takeCommand" method="GET">
+    <textarea name="answer1" id="my_field1" cols="80" rows="4"></textarea>
+    <button onclick="preventDefault(); change1();">Change Text</button>
+    <br>
+    <input type="submit" name="" id="">
+</form>
+<script>
+function change1(){
+    var recognition = new webkitSpeechRecognition();
+    recognition.lang = "en-GB";
+
+    recognition.onresult = function(event) {
+        // console.log(event);
+        document.getElementById('my_field1').value = event.results[0][0].transcript;
+    }
+    recognition.start();
+}
+</script>
+
+
